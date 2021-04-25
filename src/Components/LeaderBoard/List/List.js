@@ -1,13 +1,12 @@
 import React from "react";
 import Item from "./Item/Item";
-import trophy from "../../../Assets/Icons/trophy.png";
 
 function List({ title, rows, animatedID }) {
   console.log(`rows`, rows);
   return (
-    <div className="col-2 p-1">
+    <div className="col-lg-2 col-12 p-lg-1 p-5">
       <div className="leaderboard">
-        <h1 style={{ color: "white" }}>
+        <h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

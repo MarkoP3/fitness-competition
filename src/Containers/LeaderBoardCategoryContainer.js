@@ -7,7 +7,7 @@ import Discipline from "../Components/Discipline/Discipline";
 import CategoryService from "../Services/CategoryServices";
 
 function LeaderBoardCategoryContainer() {
-  const [animatedID, setanimatedID] = useState(1);
+  const [animatedID, setanimatedID] = useState();
   const [categories, setcategories] = useState([]);
   const [disciplines, setdisciplines] = useState([]);
   useEffect(() => {
