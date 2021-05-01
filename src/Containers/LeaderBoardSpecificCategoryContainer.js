@@ -1,12 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import LeaderBoard from "../Components/LeaderBoard/LeaderBoard";
-import LeaderBoardService from "../Services/LeaderBoardServices";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import Discipline from "../Components/Discipline/Discipline";
+import LeaderBoard from "../Components/LeaderBoard/LeaderBoard";
 import CategoryService from "../Services/CategoryServices";
-import LeaderBoardServices from "../Services/LeaderBoardServices";
-function LeaderBoardCategoryContainer() {
+
+function LeaderBoardSpecificCategoryContainer() {
   const [animatedID, setanimatedID] = useState(0);
   const [categories, setcategories] = useState([]);
   const [disciplines, setdisciplines] = useState([]);
@@ -18,22 +16,16 @@ function LeaderBoardCategoryContainer() {
       setdisciplines(data);
     });
   }, []);
-  function changeAnimatedID(id) {
-    setanimatedID(id);
-    setTimeout(() => {
-      setanimatedID(undefined);
-    }, 1000);
-  }
   return (
     <div>
       <Discipline disciplines={disciplines}></Discipline>
       <LeaderBoard
-        LeaderBoardType="category"
-        categories={categories}
+        LeaderBoardType={"discipline"}
         animatedID={animatedID}
+        categories={categories}
       ></LeaderBoard>
     </div>
   );
 }
 
-export default LeaderBoardCategoryContainer;
+export default LeaderBoardSpecificCategoryContainer;

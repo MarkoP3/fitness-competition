@@ -13,16 +13,13 @@ let disciplines = [
   "Curls",
   "Bench",
 ];
+const axios = require("axios");
 const CategoryService = {
   getAllCategories: () => {
-    return new Promise((resolve, reject) => {
-      resolve(categories);
-    });
+    return axios.get(`${process.env.REACT_APP_API_URL}categories`);
   },
   getAllDiscipline: () => {
-    return new Promise((resolve, reject) => {
-      resolve(disciplines);
-    });
+    return axios.get(`${process.env.REACT_APP_API_URL}disciplines`);
   },
 };
 export default CategoryService;

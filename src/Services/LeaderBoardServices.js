@@ -46,11 +46,17 @@ let categories = [
     ],
   },
 ];
-const CategoryService = {
-  getAllCategoriesWithCompetitors: (discipline) => {
-    return new Promise((resolve, reject) => {
-      resolve(categories);
-    });
+const axios = require("axios");
+const LeaderBoardServices = {
+  getAllCompetitorsOfCategory: (category) => {
+    return axios.get(
+      `${process.env.REACT_APP_API_URL}competitors/scoreboard?category=${category}`
+    );
+  },
+  getAllCompetitorsOfDiscipline: (category, discipline) => {
+    return axios.get(
+      `${process.env.REACT_APP_API_URL}competitors?category=${category}&discipline=${discipline}`
+    );
   },
 };
-export default CategoryService;
+export default LeaderBoardServices;

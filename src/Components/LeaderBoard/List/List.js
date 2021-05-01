@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import LeaderBoardServices from "../../../Services/LeaderBoardServices";
 import Item from "./Item/Item";
 
-function List({ title, rows, animatedID }) {
-  console.log(`rows`, rows);
+function List({ title, animatedID, id, LeaderBoarType }) {
+  const { disciplineID } = useParams();
+  const [rows, setrows] = useState([]);
+  useEffect(() => {
+    if (LeaderBoarType == "category")
+      LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
+        setrows(data);
+      });
+    else
+      LeaderBoardServices.getAllCompetitorsOfDiscipline(id, disciplineID).then(
+        ({ data }) => {
+          setrows(data);
+        }
+      );
+  }, []);
+  useEffect(() => {
+    if (LeaderBoarType == "category")
+      LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
+        setrows(data);
+      });
+    else
+      LeaderBoardServices.getAllCompetitorsOfDiscipline(id, disciplineID).then(
+        ({ data }) => {
+          setrows(data);
+        }
+      );
+  }, [disciplineID]);
   return (
     <div className="col-lg-2 col-12 p-lg-1 p-5">
       <div className="leaderboard">

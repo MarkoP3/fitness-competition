@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import LeaderBoard from "./Components/LeaderBoard/LeaderBoard";
 import LeaderBoardCategoryContainer from "./Containers/LeaderBoardCategoryContainer";
+import LeaderBoardSpecificCategoryContainer from "./Containers/LeaderBoardSpecificCategoryContainer";
 function App() {
   return (
     <Router>
@@ -14,7 +15,9 @@ function App() {
         <Route path="/leaderboard/category">
           <LeaderBoardCategoryContainer></LeaderBoardCategoryContainer>
         </Route>
-        <Route path="/leaderboard/discipline/:disciplineType"></Route>
+        <Route path="/leaderboard/discipline/:disciplineID">
+          <LeaderBoardSpecificCategoryContainer></LeaderBoardSpecificCategoryContainer>
+        </Route>
         <Route path="/">
           <Redirect to="/leaderboard/category"></Redirect>
         </Route>

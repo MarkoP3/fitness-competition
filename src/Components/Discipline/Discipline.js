@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Discipline({ disciplines }) {
   return (
@@ -8,14 +8,16 @@ function Discipline({ disciplines }) {
       style={{ fontSize: "1.5vw" }}
       className="p-2 bg-dark mb-4"
     >
-      {disciplines.map((discipline) => {
+      <span className="btn btn-link bg-dark m-2 p-2">
+        <NavLink to={`/leaderboard/category`}>Home</NavLink>
+      </span>
+      {disciplines.map(({ discipline, name, id }) => {
         return (
-          <Link
-            to={`/leaderboard/discipline/${discipline.toLowerCase()}`}
-            class="btn btn-link bg-dark m-2 p-2"
-          >
-            {discipline}
-          </Link>
+          <span class="btn btn-link bg-dark m-2 p-2">
+            <NavLink to={`/leaderboard/discipline/${id}`}>
+              {`${discipline}-${name}`}
+            </NavLink>
+          </span>
         );
       })}
     </div>
