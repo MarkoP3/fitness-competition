@@ -8,6 +8,8 @@ import {
 import LeaderBoard from "./Components/LeaderBoard/LeaderBoard";
 import LeaderBoardCategoryContainer from "./Containers/LeaderBoardCategoryContainer";
 import LeaderBoardSpecificCategoryContainer from "./Containers/LeaderBoardSpecificCategoryContainer";
+import CompetitorConatiner from "./Containers/CompetitorConatiner";
+import ResultsContainer from "./Containers/ResultsContainer";
 function App() {
   return (
     <Router>
@@ -18,11 +20,16 @@ function App() {
         <Route path="/leaderboard/discipline/:disciplineID">
           <LeaderBoardSpecificCategoryContainer></LeaderBoardSpecificCategoryContainer>
         </Route>
+
+        <Route path="/competitors">
+          <CompetitorConatiner></CompetitorConatiner>
+        </Route>
+        <Route path="/results">
+          <ResultsContainer></ResultsContainer>
+        </Route>
         <Route path="/">
           <Redirect to="/leaderboard/category"></Redirect>
         </Route>
-        <Route path="/competitors"></Route>
-        <Route path="/results"></Route>
       </Switch>
     </Router>
   );
