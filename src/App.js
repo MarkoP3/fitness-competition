@@ -10,7 +10,7 @@ import LeaderBoardSpecificCategoryContainer from "./Containers/LeaderBoardSpecif
 import CompetitorConatiner from "./Containers/CompetitorConatiner";
 import ResultsContainer from "./Containers/ResultsContainer";
 import socketIOClient from "socket.io-client";
-const socket = socketIOClient("http://localhost:8080/");
+const socket = socketIOClient(process.env.REACT_APP_SOCKET_IO);
 function App() {
   return (
     <Router>
