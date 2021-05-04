@@ -3,7 +3,14 @@ import { useParams } from "react-router";
 import LeaderBoardServices from "../../../Services/LeaderBoardServices";
 import Item from "./Item/Item";
 
-function List({ title, animatedID, id, LeaderBoarType }) {
+function List({
+  title,
+  animatedID,
+  id,
+  LeaderBoarType,
+  socket,
+  changeAnimatedID,
+}) {
   const { disciplineID } = useParams();
   const [rows, setrows] = useState([]);
   useEffect(() => {
@@ -17,8 +24,24 @@ function List({ title, animatedID, id, LeaderBoarType }) {
           setrows(data);
         }
       );
+    socket.on("refresh", (competitor) => {
+      if (LeaderBoarType == "category")
+        LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
+          setrows(data);
+          changeAnimatedID(competitor);
+        });
+      else
+        LeaderBoardServices.getAllCompetitorsOfDiscipline(
+          id,
+          disciplineID
+        ).then(({ data }) => {
+          setrows(data);
+          changeAnimatedID(competitor);
+        });
+    });
   }, []);
   useEffect(() => {
+    console.log(`discilpineID`, disciplineID);
     if (LeaderBoarType == "category")
       LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
         setrows(data);
@@ -29,6 +52,21 @@ function List({ title, animatedID, id, LeaderBoarType }) {
           setrows(data);
         }
       );
+    socket.on("refresh", (competitor) => {
+      if (LeaderBoarType == "category")
+        LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
+          setrows(data);
+          changeAnimatedID(competitor);
+        });
+      else
+        LeaderBoardServices.getAllCompetitorsOfDiscipline(
+          id,
+          disciplineID
+        ).then(({ data }) => {
+          setrows(data);
+          changeAnimatedID(competitor);
+        });
+    });
   }, [disciplineID]);
   return (
     <div className="col-lg-2 col-12 p-lg-1 p-5">

@@ -4,8 +4,8 @@ import Discipline from "../Components/Discipline/Discipline";
 import LeaderBoard from "../Components/LeaderBoard/LeaderBoard";
 import CategoryService from "../Services/CategoryServices";
 
-function LeaderBoardSpecificCategoryContainer() {
-  const [animatedID, setanimatedID] = useState(0);
+function LeaderBoardSpecificCategoryContainer({ socket }) {
+  const [animatedID, setanimatedID] = useState(-1);
   const [categories, setcategories] = useState([]);
   const [disciplines, setdisciplines] = useState([]);
   useEffect(() => {
@@ -16,10 +16,19 @@ function LeaderBoardSpecificCategoryContainer() {
       setdisciplines(data);
     });
   }, []);
+
+  function changeAnimatedID(id) {
+    setanimatedID(id);
+    setTimeout(() => {
+      setanimatedID(-1);
+    }, 1000);
+  }
   return (
     <div>
       <Discipline disciplines={disciplines}></Discipline>
       <LeaderBoard
+        changeAnimatedID={changeAnimatedID}
+        socket={socket}
         LeaderBoardType={"discipline"}
         animatedID={animatedID}
         categories={categories}

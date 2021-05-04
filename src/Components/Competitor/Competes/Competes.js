@@ -1,6 +1,13 @@
 import React from "react";
 
-function Competes({ categories, competitor, show }) {
+function Competes({
+  categories,
+  competitor,
+  show,
+  AddDiscipline,
+  saveCompetes,
+}) {
+  console.log(`categories`, categories);
   return (
     <div
       className={`bg-light col-6 mt-4 ml-auto mr-auto ${
@@ -8,14 +15,28 @@ function Competes({ categories, competitor, show }) {
       }`}
     >
       <h1>Add disciplines</h1>
-      <form className="p-2 row" action="javascript:void(0);" align="center">
+      <form
+        className="p-2 row"
+        action="javascript:void(0);"
+        align="center"
+        action="javascript:void(0);"
+        onSubmit={(e) => {
+          saveCompetes();
+          e.currentTarget.reset();
+        }}
+      >
         {categories.map((category) => {
           return (
             <div className="col-4 p-2">
               <span className="">
                 {category.name}-{category.type}
               </span>
-              <input type="checkbox" class="form-control" value={category.id} />
+              <input
+                type="checkbox"
+                class="form-control"
+                value={category.id}
+                onChange={(e) => AddDiscipline(e.currentTarget.value)}
+              />
             </div>
           );
         })}

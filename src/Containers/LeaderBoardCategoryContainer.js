@@ -2,11 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import LeaderBoard from "../Components/LeaderBoard/LeaderBoard";
-import LeaderBoardService from "../Services/LeaderBoardServices";
 import Discipline from "../Components/Discipline/Discipline";
 import CategoryService from "../Services/CategoryServices";
-import LeaderBoardServices from "../Services/LeaderBoardServices";
-function LeaderBoardCategoryContainer() {
+function LeaderBoardCategoryContainer({ socket }) {
   const [animatedID, setanimatedID] = useState(0);
   const [categories, setcategories] = useState([]);
   const [disciplines, setdisciplines] = useState([]);
@@ -18,6 +16,7 @@ function LeaderBoardCategoryContainer() {
       setdisciplines(data);
     });
   }, []);
+
   function changeAnimatedID(id) {
     setanimatedID(id);
     setTimeout(() => {
@@ -28,9 +27,11 @@ function LeaderBoardCategoryContainer() {
     <div>
       <Discipline disciplines={disciplines}></Discipline>
       <LeaderBoard
+        socket={socket}
         LeaderBoardType="category"
         categories={categories}
         animatedID={animatedID}
+        changeAnimatedID={changeAnimatedID}
       ></LeaderBoard>
     </div>
   );
