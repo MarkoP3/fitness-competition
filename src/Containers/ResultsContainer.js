@@ -6,6 +6,11 @@ function ResultsContainer({ socket }) {
   function handleSearch(filter) {
     CompetitorServices.SearchCompetitor(filter).then(({ data }) => {
       setcompetitors(data);
+      socket.on("refresh", (data) => {
+        CompetitorServices.SearchCompetitor(filter).then(({ data }) => {
+          setcompetitors(data);
+        });
+      });
     });
   }
   function handleSave(competesID, result, competitor) {

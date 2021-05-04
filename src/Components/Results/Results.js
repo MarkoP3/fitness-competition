@@ -6,7 +6,7 @@ function Results({ competitors, searchHandler, saveHandler }) {
   return (
     <div>
       <form
-        action="javascipt:void(0);"
+        action="javascript:void(0);"
         className="m-5"
         onSubmit={(e) => {
           searchHandler(search.current.value);

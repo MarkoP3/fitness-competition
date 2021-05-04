@@ -17,7 +17,6 @@ function Competes({
       <h1>Add disciplines</h1>
       <form
         className="p-2 row"
-        action="javascript:void(0);"
         align="center"
         action="javascript:void(0);"
         onSubmit={(e) => {
