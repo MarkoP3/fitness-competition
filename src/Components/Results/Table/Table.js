@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "./Row/Row";
 
-function Table({ competitors, saveHandler }) {
+function Table({ competitors, saveHandler, winnerHandler }) {
   return (
     <table className="table bg-light w-75 m-auto">
       <thead align="center">
@@ -16,7 +16,13 @@ function Table({ competitors, saveHandler }) {
       </thead>
       <tbody align="center">
         {competitors.map((competitor) => {
-          return <Row saveHandler={saveHandler} competitor={competitor}></Row>;
+          return (
+            <Row
+              winnerHandler={winnerHandler}
+              saveHandler={saveHandler}
+              competitor={competitor}
+            ></Row>
+          );
         })}
       </tbody>
     </table>

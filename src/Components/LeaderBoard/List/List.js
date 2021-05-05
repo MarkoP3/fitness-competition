@@ -33,7 +33,7 @@ function List({
       else
         LeaderBoardServices.getAllCompetitorsOfDiscipline(
           id,
-          disciplineID
+          window.location.pathname.split("/")[3]
         ).then(({ data }) => {
           setrows(data);
           changeAnimatedID(competitor);
@@ -41,7 +41,6 @@ function List({
     });
   }, []);
   useEffect(() => {
-    console.log(`discilpineID`, disciplineID);
     if (LeaderBoarType == "category")
       LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
         setrows(data);
@@ -61,7 +60,7 @@ function List({
       else
         LeaderBoardServices.getAllCompetitorsOfDiscipline(
           id,
-          disciplineID
+          window.location.pathname.split("/")[3]
         ).then(({ data }) => {
           setrows(data);
           changeAnimatedID(competitor);

@@ -16,12 +16,16 @@ function ResultsContainer({ socket }) {
   function handleSave(competesID, result, competitor) {
     CompetitorServices.changeCompetes(competesID, result, competitor);
   }
+  function declareWinner(competesID, place) {
+    CompetitorServices.declareOnPosition(competesID, place);
+  }
 
   return (
     <Results
       competitors={competitors}
       searchHandler={handleSearch}
       saveHandler={handleSave}
+      winnerHandler={declareWinner}
     ></Results>
   );
 }

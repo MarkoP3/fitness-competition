@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-function Row({ competitor, saveHandler }) {
+function Row({ competitor, saveHandler, winnerHandler }) {
+  console.log(`competitor`, competitor);
   const [value, setvalue] = useState(0);
   useEffect(() => {
     setvalue(competitor.quantity);
@@ -8,6 +9,7 @@ function Row({ competitor, saveHandler }) {
   useEffect(() => {
     setvalue(competitor.quantity);
   }, [competitor]);
+
   return (
     <tr>
       <td>{competitor.name}</td>
@@ -28,6 +30,40 @@ function Row({ competitor, saveHandler }) {
           value="Save"
           onClick={(e) => saveHandler(competitor.compID, value, competitor.id)}
         />
+      </td>
+      <td>
+        <button
+          className={`btn ${
+            competitor.place == competitor.place1 ? "btn-success " : "btn-dark "
+          } rounded-0 border-right`}
+          onClick={(e) => {
+            winnerHandler(competitor.compID, 1);
+          }}
+        >
+          1st
+        </button>
+
+        <button
+          className={`btn ${
+            competitor.place == competitor.place2 ? "btn-success" : "btn-dark"
+          } rounded-0 border-right`}
+          onClick={(e) => {
+            winnerHandler(competitor.compID, 2);
+          }}
+        >
+          2nd
+        </button>
+
+        <button
+          className={`btn ${
+            competitor.place == competitor.place3 ? "btn-success" : "btn-dark"
+          } rounded-0 border-right`}
+          onClick={(e) => {
+            winnerHandler(competitor.compID, 3);
+          }}
+        >
+          3rd
+        </button>
       </td>
     </tr>
   );

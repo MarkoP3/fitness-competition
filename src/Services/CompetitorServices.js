@@ -27,5 +27,11 @@ let CompetitorServices = {
       competitor: competitor,
     });
   },
+  declareOnPosition: (competeID, place) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}winner`, {
+      competesID: competeID,
+      place: place,
+    });
+  },
 };
 export default CompetitorServices;
