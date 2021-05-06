@@ -3,7 +3,7 @@ import Row from "./Row/Row";
 
 function Table({ competitors, saveHandler, winnerHandler }) {
   return (
-    <table className="table bg-light w-75 m-auto">
+    <table className="table bg-light col-md-10 col-xl-10 col-lg-10 col-12 m-auto">
       <thead align="center">
         <tr>
           <th scope="col">Name</th>

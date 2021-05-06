@@ -17,6 +17,7 @@ function Results({ competitors, searchHandler, saveHandler, winnerHandler }) {
           type="search"
           placeholder="Search competitor"
           className="form-control w-50 m-auto"
+          required
         />
       </form>
       <Table
