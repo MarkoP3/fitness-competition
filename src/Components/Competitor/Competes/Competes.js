@@ -6,8 +6,8 @@ function Competes({
   show,
   AddDiscipline,
   saveCompetes,
+  disciplinesAdded,
 }) {
-  console.log(`categories`, categories);
   return (
     <div
       className={`bg-light col-6 mt-4 ml-auto mr-auto ${
@@ -34,6 +34,7 @@ function Competes({
                 type="checkbox"
                 class="form-control"
                 value={category.id}
+                checked={disciplinesAdded.includes(category.id.toString())}
                 onChange={(e) => AddDiscipline(e.currentTarget.value)}
               />
             </div>

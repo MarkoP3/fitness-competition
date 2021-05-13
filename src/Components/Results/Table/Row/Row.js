@@ -37,7 +37,9 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             competitor.place == competitor.place1 ? "btn-success " : "btn-dark "
           } rounded-0 border-right`}
           onClick={(e) => {
-            winnerHandler(competitor.compID, 1);
+            if (competitor.place != competitor.place1)
+              winnerHandler(competitor.compID, 1);
+            else winnerHandler(competitor.compID, 0);
           }}
         >
           1st
@@ -48,7 +50,9 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             competitor.place == competitor.place2 ? "btn-success" : "btn-dark"
           } rounded-0 border-right`}
           onClick={(e) => {
-            winnerHandler(competitor.compID, 2);
+            if (competitor.place != competitor.place2)
+              winnerHandler(competitor.compID, 2);
+            else winnerHandler(competitor.compID, 0);
           }}
         >
           2nd
@@ -59,7 +63,9 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             competitor.place == competitor.place3 ? "btn-success" : "btn-dark"
           } rounded-0 border-right`}
           onClick={(e) => {
-            winnerHandler(competitor.compID, 3);
+            if (competitor.place != competitor.place3)
+              winnerHandler(competitor.compID, 3);
+            else winnerHandler(competitor.compID, 0);
           }}
         >
           3rd

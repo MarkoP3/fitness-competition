@@ -19,13 +19,33 @@ function CompetitorConatiner() {
     );
   }
   function AddDiscipline(discipline) {
-    console.log(categories.find((el) => el.id == discipline).name);
-    if (disciplinesAdded.indexOf(discipline) != -1)
-      setdisciplinesAdded(disciplinesAdded.filter((dis) => dis != discipline));
-    else setdisciplinesAdded([...disciplinesAdded, discipline]);
+    let dd = disciplinesAdded;
+
+    if (disciplinesAdded.indexOf(discipline) != -1) {
+      if (categories.find((el) => el.id == discipline).name == "TOTAL") {
+        const filtered = categories
+          .filter((el) => el.type == "ORM")
+          .map((e) => `${e.id}`);
+        dd = dd.filter((e) => !filtered.includes(e));
+      }
+      dd = dd.filter((dis) => dis != discipline);
+    } else {
+      if (categories.find((el) => el.id == discipline).name == "TOTAL") {
+        dd = [
+          ...disciplinesAdded,
+          ...categories.filter((el) => el.type == "ORM").map((e) => `${e.id}`),
+        ];
+      }
+      dd = [...dd, discipline];
+    }
+
+    setdisciplinesAdded(dd.filter(onlyUnique));
   }
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
   function saveCompetes() {
-    console.log(`disciplinesAdded`, disciplinesAdded);
     if (disciplinesAdded.length > 0)
       CompetitorServices.AddCompetes(disciplinesAdded, competitor).then(
         (data) => {
@@ -42,6 +62,7 @@ function CompetitorConatiner() {
         show={showcompetitor}
       ></Competitor>
       <Competes
+        disciplinesAdded={disciplinesAdded}
         AddDiscipline={AddDiscipline}
         saveCompetes={saveCompetes}
         competitor={competitor}
