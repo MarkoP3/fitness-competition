@@ -9,7 +9,7 @@ function Competitor({ addCompetitorHandler, show }) {
   const age = useRef();
   return (
     <div
-      className={`bg-light col-6 mt-4 ml-auto mr-auto ${
+      className={`bg-light col-md-12 col-sm-12 col-12 mt-4 m-0${
         show ? "d-block" : "d-none"
       }`}
     >
