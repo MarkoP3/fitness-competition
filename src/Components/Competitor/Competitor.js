@@ -34,8 +34,8 @@ function Competitor({ addCompetitorHandler, show }) {
         <input type="text" ref={ln} className="form-control mt-2" required />
         <span>Gender</span>
         <select ref={gender} className="form-control mt-2" required>
-          <option value="м">male</option>
-          <option value="ж">female</option>
+          <option value="м">м</option>
+          <option value="ж">ж</option>
         </select>
         <span>Weight:</span>
         <input
