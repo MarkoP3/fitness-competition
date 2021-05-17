@@ -14,7 +14,7 @@ function Competes({
         show ? "d-block" : "d-none"
       }`}
     >
-      <h1>Додај дициплине</h1>
+      <h1>Додај дисциплине</h1>
       <form
         className="p-2 row"
         align="center"
