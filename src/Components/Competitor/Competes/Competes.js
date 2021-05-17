@@ -14,7 +14,7 @@ function Competes({
         show ? "d-block" : "d-none"
       }`}
     >
-      <h1>Add disciplines</h1>
+      <h1>Додај дициплине</h1>
       <form
         className="p-2 row"
         align="center"
@@ -41,11 +41,11 @@ function Competes({
           );
         })}
         <div className="col-12">
-          <input className="btn btn-success m-2" type="submit" value="Add" />
+          <input className="btn btn-success m-2" type="submit" value="Сачувај" />
           <input
             className="btn btn-danger m-2"
             type="submit"
-            value="Clear"
+            value="Поништи"
             onClick={(e) => e.currentTarget.parentElement.parentElement.reset()}
           />
         </div>
