@@ -22,18 +22,18 @@ function CompetitorConatiner() {
     let dd = disciplinesAdded;
 
     if (disciplinesAdded.indexOf(discipline) != -1) {
-      if (categories.find((el) => el.id == discipline).name == "TOTAL") {
+      if (categories.find((el) => el.id == discipline).name == "ТОТАЛ") {
         const filtered = categories
-          .filter((el) => el.type == "ORM")
+          .filter((el) => el.type == "ОРМ")
           .map((e) => `${e.id}`);
         dd = dd.filter((e) => !filtered.includes(e));
       }
       dd = dd.filter((dis) => dis != discipline);
     } else {
-      if (categories.find((el) => el.id == discipline).name == "TOTAL") {
+      if (categories.find((el) => el.id == discipline).name == "ТОТАЛ") {
         dd = [
           ...disciplinesAdded,
-          ...categories.filter((el) => el.type == "ORM").map((e) => `${e.id}`),
+          ...categories.filter((el) => el.type == "ОРМ").map((e) => `${e.id}`),
         ];
       }
       dd = [...dd, discipline];
