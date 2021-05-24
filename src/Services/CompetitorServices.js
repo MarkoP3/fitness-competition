@@ -33,5 +33,13 @@ let CompetitorServices = {
       place: place,
     });
   },
+  deleteCompetitor: (id) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}deleteCompetitors`, {
+      competitor: id,
+    });
+  },
+  getAllCompetitors: () => {
+    return axios.get(`${process.env.REACT_APP_API_URL}allCompetitors`);
+  },
 };
 export default CompetitorServices;
