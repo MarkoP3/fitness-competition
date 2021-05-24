@@ -6,11 +6,11 @@ function Table({ competitors, saveHandler, winnerHandler }) {
     <table className="table bg-light col-md-10 col-xl-10 col-lg-10 col-12 m-auto">
       <thead align="center">
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Discipline</th>
-          <th scope="col">Discipline type</th>
-          <th scope="col">Category</th>
-          <th scope="col">Result</th>
+          <th scope="col">Име и презиме</th>
+          <th scope="col">Дисциплина</th>
+          <th scope="col">Тип дисциплинe</th>
+          <th scope="col">Категорија</th>
+          <th scope="col">Резултат</th>
           <th></th>
         </tr>
       </thead>

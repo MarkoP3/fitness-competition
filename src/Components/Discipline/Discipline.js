@@ -9,7 +9,7 @@ function Discipline({ disciplines }) {
       className="p-2 bg-dark mb-4"
     >
       <span className="btn btn-link bg-dark m-2 p-2">
-        <NavLink to={`/leaderboard/category`}>Home</NavLink>
+        <NavLink to={`/leaderboard/category`}>Бодови</NavLink>
       </span>
       {disciplines.map(({ discipline, name, id }) => {
         return (

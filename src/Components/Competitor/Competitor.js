@@ -27,35 +27,35 @@ function Competitor({ addCompetitorHandler, show }) {
           e.currentTarget.reset();
         }}
       >
-        <h1>Add competitor</h1>
-        <span>First Name:</span>
+        <h1>Додај такмичара</h1>
+        <span>Име:</span>
         <input type="text" ref={fn} className="form-control mt-2" required />
-        <span>Last Name:</span>
+        <span>Презиме:</span>
         <input type="text" ref={ln} className="form-control mt-2" required />
-        <span>Gender</span>
+        <span>Пол</span>
         <select ref={gender} className="form-control mt-2" required>
-          <option value="m">male</option>
-          <option value="z">female</option>
+          <option value="м">м</option>
+          <option value="ж">ж</option>
         </select>
-        <span>Weight:</span>
+        <span>Тежина:</span>
         <input
           type="number"
           ref={weight}
           className="form-control mt-2"
           required
         />
-        <span>Age:</span>
+        <span>Године:</span>
         <input
           type="number"
           ref={age}
           className="form-control mt-2 mb-4"
           required
         />
-        <input className="btn btn-success m-2" type="submit" value="Add" />
+        <input className="btn btn-success m-2" type="submit" value="Сачувај" />
         <input
           className="btn btn-danger m-2"
           type="submit"
-          value="Clear"
+          value="Поништи"
           onClick={(e) => e.currentTarget.parentElement.reset()}
         />
       </form>

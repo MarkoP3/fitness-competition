@@ -27,7 +27,7 @@ function Row({ competitor, saveHandler, winnerHandler }) {
         <input
           type="button"
           className="btn btn-success"
-          value="Save"
+          value="Сачувај"
           onClick={(e) => saveHandler(competitor.compID, value, competitor.id)}
         />
       </td>
@@ -42,7 +42,7 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             else winnerHandler(competitor.compID, 0);
           }}
         >
-          1st
+          први
         </button>
 
         <button
@@ -55,7 +55,7 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             else winnerHandler(competitor.compID, 0);
           }}
         >
-          2nd
+         други
         </button>
 
         <button
@@ -68,7 +68,7 @@ function Row({ competitor, saveHandler, winnerHandler }) {
             else winnerHandler(competitor.compID, 0);
           }}
         >
-          3rd
+          трећи
         </button>
       </td>
     </tr>
