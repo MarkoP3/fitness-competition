@@ -20,7 +20,7 @@ function CompetitorList({ handleDelete, competitors }) {
             <td>{competitor.first_name}</td>
             <td>{competitor.last_name}</td>
             <td>{competitor.weight}</td>
-            <td>{competitor.axe}</td>
+            <td>{competitor.age}</td>
             <td>{competitor.gender}</td>
             <td>{competitor.name}</td>
             <td>

@@ -10,28 +10,34 @@ function CompetitorConatiner() {
   const [competitor, setcompetitor] = useState(undefined);
   const [showcompetitor, setshowcompetitor] = useState(true);
   const [disciplinesAdded, setdisciplinesAdded] = useState([]);
-  const [totalAdded, settotalAdded] = useState(false);
   useEffect(() => {
     CompetitorServices.getAllCompetitors().then(({ data }) => {
       setcompetitors(data);
     });
   }, []);
-  function AddCompetitor(fn, ln, gender, weight, age) {
-    CompetitorServices.AddCompetitor(fn, ln, gender, weight, age).then(
-      ({ data }) => {
-        setcategories(data.categories);
-        setcompetitor(data.competitor);
-        setshowcompetitor(false);
-        CompetitorServices.getAllCompetitors().then(({ data }) => {
-          setcompetitors(data);
-        });
-      }
-    );
+  function AddCompetitor(fn, ln, gender, weight, age, isSpecial, imageHref) {
+    CompetitorServices.AddCompetitor(
+      fn,
+      ln,
+      gender,
+      weight,
+      age,
+      isSpecial,
+      imageHref
+    ).then(({ data }) => {
+      setcategories(data.categories);
+      setcompetitor(data.competitor);
+      setshowcompetitor(false);
+      CompetitorServices.getAllCompetitors().then(({ data }) => {
+        setcompetitors(data);
+      });
+    });
   }
   function AddDiscipline(discipline) {
     let dd = disciplinesAdded;
 
-    if (disciplinesAdded.indexOf(discipline) != -1) {
+    dd = [...dd, discipline];
+    /*  if (disciplinesAdded.indexOf(discipline) != -1) {
       if (categories.find((el) => el.id == discipline).name == "ТОТАЛ") {
         const filtered = categories
           .filter((el) => el.type == "ОРМ")
@@ -47,7 +53,7 @@ function CompetitorConatiner() {
         ];
       }
       dd = [...dd, discipline];
-    }
+    }*/
 
     setdisciplinesAdded(dd.filter(onlyUnique));
   }

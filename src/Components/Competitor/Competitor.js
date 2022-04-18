@@ -7,6 +7,8 @@ function Competitor({ addCompetitorHandler, show }) {
   const gender = useRef();
   const weight = useRef();
   const age = useRef();
+  const isSpecial = useRef();
+  const imageHref = useRef();
   return (
     <div
       className={`bg-light col-md-12 col-sm-12 col-12 mt-4 m-0 ${
@@ -22,7 +24,11 @@ function Competitor({ addCompetitorHandler, show }) {
             ln.current.value,
             gender.current.value,
             weight.current.value,
-            age.current.value
+            age.current.value,
+            isSpecial.current.checked,
+            imageHref.current.files[0]?.name
+              ? imageHref.current.files[0]?.name
+              : ""
           );
           e.currentTarget.reset();
         }}
@@ -51,6 +57,11 @@ function Competitor({ addCompetitorHandler, show }) {
           className="form-control mt-2 mb-4"
           required
         />
+        <span>Посебне потребе:</span>
+        <input ref={isSpecial} type="checkbox" className="m-3"></input>
+        <span>Слика:</span>
+        <input ref={imageHref} type="file" className="m-3"></input>
+        <br />
         <input className="btn btn-success m-2" type="submit" value="Сачувај" />
         <input
           className="btn btn-danger m-2"

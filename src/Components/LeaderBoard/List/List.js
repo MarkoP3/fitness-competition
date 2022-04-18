@@ -4,6 +4,8 @@ import LeaderBoardServices from "../../../Services/LeaderBoardServices";
 import Item from "./Item/Item";
 
 function List({
+  showKingModal,
+  showModal,
   title,
   animatedID,
   id,
@@ -17,11 +19,13 @@ function List({
     if (LeaderBoarType == "category")
       LeaderBoardServices.getAllCompetitorsOfCategory(id).then(({ data }) => {
         setrows(data);
+        console.log("data", data);
       });
     else
       LeaderBoardServices.getAllCompetitorsOfDiscipline(id, disciplineID).then(
         ({ data }) => {
           setrows(data);
+          console.log("data", data);
         }
       );
     socket.on("refresh", (competitor) => {
@@ -68,7 +72,7 @@ function List({
     });
   }, [disciplineID]);
   return (
-    <div className="col-lg-2 col-12 p-lg-1 p-5">
+    <div className="col-lg-2 col-12">
       <div className="leaderboard">
         <h1>
           <svg
@@ -91,9 +95,10 @@ function List({
           {rows.map((row) => {
             return (
               <Item
-                id={row.id}
-                name={row.name}
-                points={row.points}
+                isKing={row?.maxPoints == row?.points && row?.points > 0}
+                showKingModal={showKingModal}
+                showModal={showModal}
+                itemData={row}
                 animation={animatedID == row.id ? "animated fadeInUpBig" : ""}
               ></Item>
             );
