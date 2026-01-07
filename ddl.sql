@@ -15,7 +15,9 @@ CREATE TABLE category(
  last_name varchar(100) NOT NULL,
  gender char(1) NOT NULL,
  weight FLOAT NOT NULL,
- axe INTEGER NOT NULL,
+ age INTEGER NOT NULL,
+ imageHref VARCHAR(255) NOT NULL,
+ isSpecial BOOLEAN NOT NULL,
  categoryID INTEGER NOT NULL REFERENCES category(id)
  );
 

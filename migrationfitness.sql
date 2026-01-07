@@ -36,6 +36,7 @@ CREATE TABLE `category` (
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` VALUES (1,'И18'),(2,'Жене'),(3,'Лака кат.'),(4,'Средња кат.'),(5,'Тешка кат.');
+INSERT INTO `category` VALUES (6,'Посебни');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,6 +64,78 @@ CREATE TABLE `competes` (
 LOCK TABLES `competes` WRITE;
 /*!40000 ALTER TABLE `competes` DISABLE KEYS */;
 INSERT INTO `competes` VALUES (455,1,115,210,3),(465,4,115,100,1),(475,6,115,80,3),(485,15,115,15,2),(495,3,115,405,4),(505,2,115,50,0),(515,5,115,12,1),(525,7,115,15,2);
+INSERT INTO `competes` VALUES
+(535,1,116,180,2),
+(545,4,116,85,1),
+(555,6,116,60,2),
+(565,3,116,325,3),
+(575,2,116,40,0),
+(585,1,117,140,1),
+(595,7,117,10,1),
+(605,9,117,35,0),
+(615,10,117,5,0),
+(625,1,118,200,3),
+(635,4,118,95,2),
+(645,6,118,75,3),
+(655,2,118,55,1),
+(665,3,118,350,3),
+(675,1,119,120,0),
+(685,5,119,8,0),
+(695,7,119,12,1),
+(705,15,119,10,1);
+-- Coverage for all category-discipline mappings
+INSERT INTO `competes` VALUES
+(715,1,120,160,0),
+(725,2,120,45,0),
+(735,3,120,400,0),
+(745,4,120,90,0),
+(755,5,120,12,0),
+(765,6,120,70,0),
+(775,7,120,14,0),
+(785,10,120,6,0),
+(795,15,120,14,0),
+(805,1,121,120,0),
+(815,2,121,35,0),
+(825,3,121,320,0),
+(835,4,121,70,0),
+(845,5,121,10,0),
+(855,6,121,55,0),
+(865,7,121,12,0),
+(875,9,121,30,0),
+(885,1,122,170,0),
+(895,2,122,48,0),
+(905,3,122,410,0),
+(915,4,122,95,0),
+(925,5,122,13,0),
+(935,6,122,78,0),
+(945,7,122,15,0),
+(955,10,122,7,0),
+(965,15,122,16,0),
+(975,1,123,150,0),
+(985,2,123,42,0),
+(995,3,123,360,0),
+(1005,4,123,85,0),
+(1015,5,123,11,0),
+(1025,6,123,68,0),
+(1035,7,123,13,0),
+(1045,10,123,6,0),
+(1055,15,123,15,0),
+(1065,1,124,200,0),
+(1075,2,124,55,0),
+(1085,3,124,430,0),
+(1095,4,124,100,0),
+(1105,5,124,14,0),
+(1115,6,124,82,0),
+(1125,7,124,16,0),
+(1135,10,124,8,0),
+(1145,15,124,18,0);
+-- Special category competitors (isSpecial=1) participating in a few disciplines
+INSERT INTO `competes` VALUES
+(1155,1,125,150,0),
+(1165,4,125,80,0),
+(1175,6,125,65,0),
+(1185,2,126,38,0),
+(1195,5,126,9,0);
 /*!40000 ALTER TABLE `competes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +152,9 @@ CREATE TABLE `competitor` (
   `last_name` varchar(100) NOT NULL,
   `gender` char(1) NOT NULL,
   `weight` float NOT NULL,
-  `axe` int(11) NOT NULL,
+  `age` int(11) NOT NULL,
+  `imageHref` varchar(255) NOT NULL DEFAULT 'logo192.png',
+  `isSpecial` tinyint(1) NOT NULL DEFAULT 0,
   `categoryID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4;
@@ -91,7 +166,21 @@ CREATE TABLE `competitor` (
 
 LOCK TABLES `competitor` WRITE;
 /*!40000 ALTER TABLE `competitor` DISABLE KEYS */;
-INSERT INTO `competitor` VALUES (115,'Milos ','Puzovi','м',97,25,5);
+INSERT INTO `competitor` (`id`,`first_name`,`last_name`,`gender`,`weight`,`age`,`imageHref`,`isSpecial`,`categoryID`) VALUES (115,'Milos ','Puzovi','м',97,25,'logo192.png',0,5);
+INSERT INTO `competitor` (`id`,`first_name`,`last_name`,`gender`,`weight`,`age`,`imageHref`,`isSpecial`,`categoryID`) VALUES
+(116,'Nikola','Jovanovic','м',88,22,'default.png',0,4),
+(117,'Ana','Petrovic','ж',62,20,'logo192.png',0,2),
+(118,'Marko','Ilic','м',92,27,'default.png',1,5),
+(119,'Jelena','Stojanovic','ж',70,24,'logo192.png',0,3);
+INSERT INTO `competitor` (`id`,`first_name`,`last_name`,`gender`,`weight`,`age`,`imageHref`,`isSpecial`,`categoryID`) VALUES
+(120,'Petar','Kovacevic','м',85,23,'logo192.png',0,1),
+(121,'Ivana','Nikolic','ж',58,19,'default.png',0,2),
+(122,'Stefan','Radovic','м',90,26,'logo192.png',0,3),
+(123,'Maja','Milosevic','ж',68,24,'default.png',0,4),
+(124,'Luka','Savic','м',95,28,'logo192.png',0,5);
+INSERT INTO `competitor` (`id`,`first_name`,`last_name`,`gender`,`weight`,`age`,`imageHref`,`isSpecial`,`categoryID`) VALUES
+(125,'Boris','Zoric','м',80,29,'logo192.png',1,6),
+(126,'Sara','Kostic','ж',55,21,'default.png',1,6);
 /*!40000 ALTER TABLE `competitor` ENABLE KEYS */;
 UNLOCK TABLES;
 
